@@ -1,0 +1,49 @@
+{
+  "name": "prominiti",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "DATABASE_URL=postgres://postgres:pass@localhost:5432/prominiti NODE_ENV=development PORT=3000 node index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "core-js": "^3.9.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-error-handler": "^1.1.0",
+    "haversine-distance": "^1.2.1",
+    "imagemin": "^8.0.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "jimp": "^0.16.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "node-schedule": "^2.1.0",
+    "nodemailer": "^6.6.2",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.2",
+    "sequelize-tokenify": "^0.2.3",
+    "sql-template-strings": "^2.2.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-jest-dom": "^3.9.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.7.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1"
+  }
+}
