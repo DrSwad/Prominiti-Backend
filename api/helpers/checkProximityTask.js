@@ -2,13 +2,14 @@ const {
   models: { Location },
 } = require("../models");
 const haversine = require("haversine-distance");
-const notifyOnTaskCompletion = require("./notifyOnTaskCompletion");
+const { notifyOnTaskCompletion } = require("./taskReminders");
 
 async function checkProximityTask(
   user_location,
   trackedUserId,
   distance,
-  taskID
+  taskID,
+  userID
 ) {
   const { longitude, latitude } = user_location;
 
@@ -21,10 +22,17 @@ async function checkProximityTask(
         { longitude, latitude },
         { longitude: longitude2, latitude: latitude2 }
       );
-      console.log(longitude, latitude, longitude2, latitude2, distance, calculated_distance);
+      console.log(
+        longitude,
+        latitude,
+        longitude2,
+        latitude2,
+        distance,
+        calculated_distance
+      );
 
       if (calculated_distance <= distance) {
-        notifyOnTaskCompletion(taskID);
+        notifyOnTaskCompletion(userID, taskID);
       }
     }
   }

@@ -1,7 +1,9 @@
 const fs = require("fs");
 const { Sequelize } = require("sequelize");
 const { db, env } = require("../../config");
-const sequelize = new Sequelize(db);
+const sequelize = new Sequelize(db, {
+  logging: false,
+});
 
 fs.readdirSync(__dirname)
   .filter((file) => file.indexOf(".") !== 0 && file !== "index.js")

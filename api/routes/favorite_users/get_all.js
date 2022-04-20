@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 
 const {
-  models: { FavoriteUser },
+  models: { FavoriteUser, User },
 } = require("../../models");
 const {
   authenticatedMiddleware,
@@ -11,14 +11,18 @@ const {
 router.get("/", authenticatedMiddleware, async function (req, res, next) {
   try {
     const userID = req.user.id;
-    const favoriteUsers = (
-      await FavoriteUser.findAll({
-        attributes: ["favoriteId"],
-        where: {
-          UserId: userID,
-        },
-      })
-    ).map((row) => row.favoriteId);
+    const favoriteUsers = await Promise.all(
+      (
+        await FavoriteUser.findAll({
+          attributes: ["favoriteId"],
+          where: {
+            UserId: userID,
+          },
+        })
+      ).map(({ favoriteId }) =>
+        User.findByPk(favoriteId).then((user) => user.username)
+      )
+    );
     return res.json({
       data: { favoriteUsers },
     });
